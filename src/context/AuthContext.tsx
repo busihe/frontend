@@ -7,7 +7,8 @@ export interface User {
   role: string;
 }
 
-interface AuthContextType {
+// ⬅️ Add "export" here
+export interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<User>;
   logout: () => void;
@@ -17,8 +18,8 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType>({
   user: null,
   login: async () => { throw new Error("login function not implemented"); },
-  logout: () => { },
-  register: async () => { },
+  logout: () => {},
+  register: async () => {},
 });
 
 export const useAuth = () => useContext(AuthContext);
